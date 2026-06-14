@@ -1,0 +1,46 @@
+const { app, BrowserWindow, screen } = require('electron');
+const path = require('path');
+
+let mainWindow;
+
+function createWindow() {
+  const { width: scrWidth, height: scrHeight } = screen.getPrimaryDisplay().workAreaSize;
+
+  const winWidth = 350;
+  const winHeight = 450;
+
+  mainWindow = new BrowserWindow({
+    width: winWidth,
+    height: winHeight,
+    x: scrWidth - winWidth - 20,
+    y: scrHeight - winHeight - 20,
+    
+    frame: false,
+    transparent: true,
+    hasShadow: true,
+    alwaysOnTop: true,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false
+    },
+    icon: path.join(__dirname, 'assets/icon.ico')
+  });
+
+  mainWindow.loadFile('index.html');
+
+  mainWindow.on('closed', function () {
+    mainWindow = null;
+  });
+}
+
+app.whenReady().then(() => {
+  createWindow();
+
+  app.on('activate', function () {
+    if (BrowserWindow.getAllWindows().length === 0) createWindow();
+  });
+});
+
+app.on('window-all-closed', function () {
+  if (process.platform !== 'darwin') app.quit();
+});
