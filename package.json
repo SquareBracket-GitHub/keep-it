@@ -1,8 +1,8 @@
 {
   "name": "keep!t",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Glassmorphic Notepad",
-  "main": "main.js",
+  "main": "src/main/main.js",
   "scripts": {
     "start": "electron .",
     "build": "electron-builder"
@@ -28,5 +28,8 @@
   "devDependencies": {
     "electron": "^42.4.0",
     "electron-builder": "^26.15.3"
+  },
+  "dependencies": {
+    "moment": "^2.30.1"
   }
 }

@@ -50,15 +50,23 @@ body {
     font-weight: bold;
 }
 
-.close-btn {
+.btn {
     width: 12px;
     height: 12px;
-    background: #ff5f56;
     border-radius: 50%;
     cursor: pointer;
     -webkit-app-region: no-drag;
     /* button is not draggable */
     border: none;
+    margin: 0 0 0 5px;
+}
+
+.close-btn {
+    background: #ff5f56;
+}
+
+.save-btn {
+    background: #ffbd2e;
 }
 
 /* content area */

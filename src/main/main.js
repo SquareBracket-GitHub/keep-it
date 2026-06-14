@@ -1,5 +1,7 @@
-const { app, BrowserWindow, screen } = require('electron');
+const { app, BrowserWindow, screen, ipcMain, dialog } = require('electron');
 const path = require('path');
+
+const { openSaveDialog } = require("./modules/open-save-dialog");
 
 let mainWindow;
 
@@ -21,12 +23,13 @@ function createWindow() {
     alwaysOnTop: true,
     webPreferences: {
       nodeIntegration: true,
-      contextIsolation: false
+      contextIsolation: false,
+      preload: path.join(__dirname, 'preload.js')
     },
     icon: path.join(__dirname, 'assets/icon.ico')
   });
 
-  mainWindow.loadFile('index.html');
+  mainWindow.loadFile('src/web/index.html');
 
   mainWindow.on('closed', function () {
     mainWindow = null;
@@ -43,4 +46,8 @@ app.whenReady().then(() => {
 
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit();
+});
+
+ipcMain.handle('open-save-dialog', async (_, options) => {
+    await openSaveDialog(mainWindow, options);
 });

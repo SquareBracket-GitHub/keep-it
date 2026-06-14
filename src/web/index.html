@@ -5,24 +5,21 @@
     <meta charset="UTF-8">
     <title>Keep !t</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 
 <body>
     <div class="notepad-container">
         <div class="title-bar">
-            <span class="title">Keep !t</span>
-            <button class="close-btn" id="closeBtn" title="닫기"></button>
+            <span class="title" id="title">Keep !t</span>
+            <div>
+                <button class="btn save-btn" id="saveBtn" title="저장"></button>
+                <button class="btn close-btn" id="closeBtn" title="닫기"></button>
+            </div>
         </div>
 
         <textarea class="content-area" placeholder="Type your insights here..."></textarea>
     </div>
-
-    <script>
-        const { remote } = require('electron');
-        document.getElementById('closeBtn').addEventListener('click', () => {
-            window.close();
-        });
-    </script>
 </body>
 
 </html>
