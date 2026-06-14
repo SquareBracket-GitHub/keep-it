@@ -15,7 +15,7 @@ A minimalist, glassmorphic semi-transparent notepad that anchors to the bottom-r
 ---
 
 ## Download
-[![Download Keep !t](https://img.shields.io/badge/Download-Keep%20!t%20v1.1.0%20(Setup)-0078D4?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/SquareBracket-GitHub/keep-it/releases/download/v1.1.0/keepit_Setup_1.1.0.exe)
+[![Download Keep !t](https://img.shields.io/badge/Download-Keep%20!t%20v1.1.0%20(Setup)-0078D4?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/SquareBracket-GitHub/keep-it/releases/download/v1.0.1/keepit_Setup_1.0.1.exe)
 
 ---
 
