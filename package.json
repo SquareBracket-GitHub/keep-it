@@ -1,6 +1,6 @@
 {
   "name": "keep!t",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Glassmorphic Notepad",
   "main": "main.js",
   "scripts": {
@@ -10,9 +10,16 @@
   "build": {
     "appId": "com.keep!t.notepad",
     "win": {
-      "target": "portable",
+      "target": "nsis",
       "icon": "assets/icon.ico"
     }
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": false,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "shortcutName": "keep!t"
   },
   "keywords": [],
   "author": "New Potato",
