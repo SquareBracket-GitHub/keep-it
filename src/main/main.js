@@ -1,9 +1,11 @@
 const { app, BrowserWindow, screen, ipcMain, dialog } = require('electron');
+const { readFileSync } = require('fs');
 const path = require('path');
 
 const { openSaveDialog } = require("./modules/open-save-dialog");
 
 let mainWindow;
+const devTest = true;
 
 function createWindow() {
   const { width: scrWidth, height: scrHeight } = screen.getPrimaryDisplay().workAreaSize;
@@ -16,7 +18,7 @@ function createWindow() {
     height: winHeight,
     x: scrWidth - winWidth - 20,
     y: scrHeight - winHeight - 20,
-    
+
     frame: false,
     transparent: true,
     hasShadow: true,
@@ -30,6 +32,14 @@ function createWindow() {
   });
 
   mainWindow.loadFile('src/web/index.html');
+
+  if (devTest) {
+    mainWindow.webContents.openDevTools({ mode: 'detach' });
+
+    mainWindow.webContents.setWindowOpenHandler(() => {
+      return { action: 'allow' };
+    });
+  }
 
   mainWindow.on('closed', function () {
     mainWindow = null;
@@ -49,5 +59,10 @@ app.on('window-all-closed', function () {
 });
 
 ipcMain.handle('open-save-dialog', async (_, options) => {
-    await openSaveDialog(mainWindow, options);
+  await openSaveDialog(mainWindow, options);
+});
+
+ipcMain.handle('read-settings', async () => {
+  const result = await readFileSync();
+  console.log(result);
 });
